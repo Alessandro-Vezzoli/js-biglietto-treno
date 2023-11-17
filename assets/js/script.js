@@ -39,9 +39,9 @@ let price = km * 0.21;
 
 //stamparlo in console
 
-//se l'età è minore di 18 anni scontare il 20%
-
 if (age < 18) {
+  //se l'età è minore di 18 anni scontare il 20%
+
   const coupon20 = 20;
 
   let discount20 = price * ((100 - coupon20) / 100);
@@ -49,10 +49,12 @@ if (age < 18) {
   // stampare in console
 
   console.log(discount20);
-}
 
-// se l'età e maggiore di 65 anni scontare del 40%
-else if (age > 65) {
+  // scriverlo in pagina
+  priceTot.innerHTML = `Il prezzo del biglietto è: ${discount20} €`;
+} else if (age > 65) {
+  // se l'età e maggiore di 65 anni scontare del 40%
+
   const coupon40 = 40;
 
   let discount40 = price * ((100 - coupon40) / 100);
@@ -60,8 +62,16 @@ else if (age > 65) {
   // stampare in console
 
   console.log(discount40);
-}
-// altrimenti stampare il prezzo senza sconto
-else {
+
+  // scriverlo in pagina
+  priceTot.innerHTML = `Il prezzo del biglietto è: ${discount40} €`;
+} else {
+  // altrimenti stampare il prezzo senza sconto
+
+  // stampare in console
+
   console.log(price);
+
+  // scriverlo in pagina
+  priceTot.innerHTML = `Il prezzo del biglietto è: ${price} €`;
 }
