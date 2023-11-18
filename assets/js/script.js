@@ -27,51 +27,49 @@ Il programma dovrà chiedere all'utente:
 
 // chiedere all'utente il numero dei km da percorrere
 
-const km = prompt("Quanti chilometri vuoi percorrere?");
+const km = parseFloat(prompt("Quanti chilometri vuoi percorrere?"));
 
 // chiedere all'utente l'età
 
-const age = prompt("Quanti anni hai? ");
+const age = parseInt(prompt("Quanti anni hai? ", "0"));
 
-// Calcolare il prezzo del biglietto in base hai km (0,21 euro al km)
+// Controllare che siano numeri quelli inseriti
 
-let price = km * 0.21;
-
-//stamparlo in console
-
-if (age < 18) {
-  //se l'età è minore di 18 anni scontare il 20%
-
-  const coupon20 = 20;
-
-  let discount20 = price * ((100 - coupon20) / 100);
-
-  // stampare in console
-
-  console.log(discount20);
-
-  // scriverlo in pagina
-  priceTot.innerHTML = `Il prezzo del biglietto è: ${discount20} €`;
-} else if (age > 65) {
-  // se l'età e maggiore di 65 anni scontare del 40%
-
-  const coupon40 = 40;
-
-  let discount40 = price * ((100 - coupon40) / 100);
-
-  // stampare in console
-
-  console.log(discount40);
-
-  // scriverlo in pagina
-  priceTot.innerHTML = `Il prezzo del biglietto è: ${discount40} €`;
+if (isNaN(km) || isNaN(age)) {
+  document.getElementById("error").innerHTML = `INSERIRE I DATI CORRETTI! 😡`;
 } else {
-  // altrimenti stampare il prezzo senza sconto
+  // Calcolare il prezzo del biglietto in base hai km (0,21 euro al km)
 
-  // stampare in console
+  let price = km * 0.21;
 
-  console.log(price);
+  let priceTot;
 
-  // scriverlo in pagina
-  priceTot.innerHTML = `Il prezzo del biglietto è: ${price} €`;
+  //stamparlo in console
+  console.log("il prezzo senza sconto è:", price);
+
+  if (age < 18) {
+    //se l'età è minore di 18 anni scontare il 20%
+
+    const coupon20 = 20;
+
+    priceTot = price * ((100 - coupon20) / 100);
+
+    // stampare in console
+
+    console.log(priceTot);
+  } else if (age > 65) {
+    // se l'età e maggiore di 65 anni scontare del 40%
+
+    const coupon40 = 40;
+
+    priceTot = price * ((100 - coupon40) / 100);
+
+    // stampare in console
+
+    console.log(priceTot);
+  } else {
+    console.log(price);
+  }
+
+  document.getElementById(priceTot)= `Il prezzo del biglietto è: ${priceTot} €`;
 }
