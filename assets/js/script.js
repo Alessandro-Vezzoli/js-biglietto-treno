@@ -42,7 +42,9 @@ if (isNaN(km) || isNaN(age)) {
 
   let price = km * 0.21;
 
-  let priceTot;
+  let priceTot = price;
+
+  let coupon = 0;
 
   //stamparlo in console
   console.log("il prezzo senza sconto è:", price);
@@ -50,26 +52,16 @@ if (isNaN(km) || isNaN(age)) {
   if (age < 18) {
     //se l'età è minore di 18 anni scontare il 20%
 
-    const coupon20 = 20;
-
-    priceTot = price * ((100 - coupon20) / 100);
-
-    // stampare in console
-
-    console.log(priceTot);
+    coupon = 20;
   } else if (age > 65) {
     // se l'età e maggiore di 65 anni scontare del 40%
 
-    const coupon40 = 40;
-
-    priceTot = price * ((100 - coupon40) / 100);
-
-    // stampare in console
-
-    console.log(priceTot);
-  } else {
-    console.log(price);
+    coupon = 40;
   }
 
-  document.getElementById(priceTot)= `Il prezzo del biglietto è: ${priceTot} €`;
+  priceTot = price * ((100 - coupon) / 100);
+
+  document.getElementById(
+    "priceTot"
+  ).innerHTML = `Il prezzo del biglietto è: ${priceTot.toFixed(2)} €`;
 }
